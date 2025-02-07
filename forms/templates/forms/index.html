@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apartment price predictor</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Check current apartments price in Krakow!</h2>
+        <form id="apartment-form" method="post">
+            {% csrf_token %}
+
+            <div class="input-group">
+                <label for="district">District</label>
+                {{ form.district }}
+            </div>
+
+            <div class="input-group">
+                <label for="rooms">Numer of rooms</label>
+                {{ form.rooms }}
+            </div>
+
+            <div class="input-group">
+                <label for="furnished">Furnished?</label>
+                {{ form.furnished }}
+            </div>
+
+            <div class="input-group">
+                <label for="area">Area (m²)</label>
+                {{ form.meters }}
+            </div>
+
+            <button type="submit" class="btn">Calculate price</button>
+        </form>
+
+        <div id="result">{{ result }}</div>
+    </div>
+    <footer>
+        price is based on olx offers
+    </footer>
+
+</body>
+</html>
